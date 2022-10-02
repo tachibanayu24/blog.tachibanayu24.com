@@ -1,3 +1,10 @@
 {
-  "extends": ["@remix-run/eslint-config", "@remix-run/eslint-config/node"]
+  "root": true,
+  "extends": ["@remix-run/eslint-config", "@remix-run/eslint-config/node"],
+  "ignorePatterns": ["tailwind.config.js", "remix.config.js"],
+  "plugins": ["react-hooks"],
+  "rules": {
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
+  }
 }
