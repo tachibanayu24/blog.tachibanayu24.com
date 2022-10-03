@@ -14,7 +14,20 @@ import styles from "./tailwind.css";
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
   title: "たちばなゆうとのブログ",
+  description:
+    "たちばなゆうとのブログです。技術的な関心・日記・ファイナンスのことなどを書いていきます。",
   viewport: "width=device-width,initial-scale=1",
+  "og:title": "たちばなゆうとのブログ",
+  "og:type": "website",
+  "og:description":
+    "たちばなゆうとのブログです。技術的な関心・日記・ファイナンスのことなどを書いていきます。",
+  "og:image": "https://storage.googleapis.com/tachibanayu24/utils/me128.jpeg",
+  "og:image:width": "128",
+  "og:image:height": "128",
+  "twitter:card": "summary",
+  "twitter:title": "たちばなゆうとのブログ",
+  "twitter:creator": "tachibanayu24",
+  "twitter:description": "summary_large_image",
 });
 
 export function links() {
