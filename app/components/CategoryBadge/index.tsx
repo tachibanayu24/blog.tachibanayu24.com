@@ -13,7 +13,7 @@ export const CategoryBadge = ({ category }: Props) => {
   const { style, emoji, text } = categories[category];
 
   return (
-    <div className={`${style}  py-1 px-2 rounded-full shadow-md`}>
+    <div className={`${style}  py-1 px-2 rounded-full shadow-md text-xs`}>
       {emoji} {text}
     </div>
   );

@@ -1,19 +1,19 @@
 import type { LoaderFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
+
 import { ArticleCard } from "~/components/ArticleCard";
 import { client } from "~/libs/server/apiClient.server";
+import type { Article } from "~/types/cms";
 
 export const loader: LoaderFunction = async () => {
-  // microcms-js-sdkを使って一覧を取得
-  const { contents } = await client.getList<any>({
+  const { contents } = await client.getList<Article[]>({
     endpoint: "blogs",
   });
-  return contents;
+  return contents.filter((c) => c.publishedAt);
 };
 
 export default function Index() {
-  const articles = useLoaderData<any>();
-  console.log(articles);
+  const articles = useLoaderData<Article[]>();
 
   return (
     <div className="flex flex-wrap gap-12 justify-start">

@@ -36,7 +36,7 @@ export default function App() {
       </head>
       <body>
         <Header />
-        <div className="p-8 bg-slate-50 min-h-[calc(100vh-56px-64px)]">
+        <div className="py-8 px-4 lg:px-12 bg-slate-50 min-h-[calc(100vh-56px-64px)]">
           <Outlet />
         </div>
         <Footer />
