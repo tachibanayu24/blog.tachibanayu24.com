@@ -7,6 +7,7 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
+import { Header } from "./components/Header";
 import styles from "./tailwind.css";
 
 export const meta: MetaFunction = () => ({
@@ -33,7 +34,10 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <Outlet />
+        <Header />
+        <div className="p-8">
+          <Outlet />
+        </div>
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
