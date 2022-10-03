@@ -3,7 +3,7 @@ import me from "~/assets/images/me128.jpeg";
 
 export const Header = () => {
   return (
-    <div className="bg-white shadow-md px-4 py-2">
+    <header className="bg-white shadow-md px-4 py-2 sticky top-0">
       <Link to="/" className="flex gap-2 items-center">
         <img src={me} alt="me" className="w-10 h-10 rounded-full" />
         <div>
@@ -13,6 +13,6 @@ export const Header = () => {
           </p>
         </div>
       </Link>
-    </div>
+    </header>
   );
 };

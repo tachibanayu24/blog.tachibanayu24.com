@@ -1,45 +1,33 @@
+import type { LoaderFunction } from "@remix-run/node";
+import { useLoaderData } from "@remix-run/react";
 import { ArticleCard } from "~/components/ArticleCard";
+import { client } from "~/libs/server/apiClient.server";
+
+export const loader: LoaderFunction = async () => {
+  // microcms-js-sdkを使って一覧を取得
+  const { contents } = await client.getList<any>({
+    endpoint: "blogs",
+  });
+  return contents;
+};
 
 export default function Index() {
+  const articles = useLoaderData<any>();
+  console.log(articles);
+
   return (
-    <>
-      <div className="flex flex-wrap gap-12 justify-center">
+    <div className="flex flex-wrap gap-12 justify-start">
+      {articles.map((article) => (
         <ArticleCard
-          title="マシュマロって最近食べてないよね"
-          body="甘すぎるからあんまり欲しくならないし、そもそもコンビニとかで見かけない。手軽に食べられうようなマシュマロが開発されていないだけかも。マシュマロっぽい手軽に食べられる何かは売られているけど、あれはマシュマロって感じでもないしなぁ。"
-          src="articles/1"
+          key={article.id}
+          title={article.title}
+          body={article.content.replace(/(<([^>]+)>)/gi, "")}
+          eyecatch={article.eyecatch.url}
+          category={article.category.name}
+          publishedAt={new Date(article.publishedAt)}
+          src={`articles/${article.id}`}
         />
-
-        <ArticleCard
-          title="マシュマロって最近食べてないよね"
-          body="甘すぎるからあんまり欲しくならないし、そもそもコンビニとかで見かけない。手軽に食べられうようなマシュマロが開発されていないだけかも。マシュマロっぽい手軽に食べられる何かは売られているけど、あれはマシュマロって感じでもないしなぁ。"
-          src="articles/1"
-        />
-
-        <ArticleCard
-          title="マシュマロって最近食べてないよね"
-          body="甘すぎるからあんまり欲しくならないし、そもそもコンビニとかで見かけない。手軽に食べられうようなマシュマロが開発されていないだけかも。マシュマロっぽい手軽に食べられる何かは売られているけど、あれはマシュマロって感じでもないしなぁ。"
-          src="articles/1"
-        />
-
-        <ArticleCard
-          title="マシュマロって最近食べてないよね"
-          body="甘すぎるからあんまり欲しくならないし、そもそもコンビニとかで見かけない。手軽に食べられうようなマシュマロが開発されていないだけかも。マシュマロっぽい手軽に食べられる何かは売られているけど、あれはマシュマロって感じでもないしなぁ。"
-          src="articles/1"
-        />
-
-        <ArticleCard
-          title="マシュマロって最近食べてないよね"
-          body="甘すぎるからあんまり欲しくならないし、そもそもコンビニとかで見かけない。手軽に食べられうようなマシュマロが開発されていないだけかも。マシュマロっぽい手軽に食べられる何かは売られているけど、あれはマシュマロって感じでもないしなぁ。"
-          src="articles/1"
-        />
-
-        <ArticleCard
-          title="マシュマロって最近食べてないよね"
-          body="甘すぎるからあんまり欲しくならないし、そもそもコンビニとかで見かけない。手軽に食べられうようなマシュマロが開発されていないだけかも。マシュマロっぽい手軽に食べられる何かは売られているけど、あれはマシュマロって感じでもないしなぁ。"
-          src="articles/1"
-        />
-      </div>
-    </>
+      ))}
+    </div>
   );
 }

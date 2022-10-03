@@ -7,6 +7,7 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
+import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
 import styles from "./tailwind.css";
 
@@ -35,9 +36,10 @@ export default function App() {
       </head>
       <body>
         <Header />
-        <div className="p-8">
+        <div className="p-8 bg-slate-50 min-h-[calc(100vh-56px-64px)]">
           <Outlet />
         </div>
+        <Footer />
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
