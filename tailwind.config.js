@@ -3,6 +3,9 @@ module.exports = {
   content: ["./app/**/*.{js,ts,jsx,tsx}"],
   darkMode: "class",
   theme: {
+    maxWidth: {
+      prose: "100%",
+    },
     extend: {
       animation: {
         fade: "fadeOut 3s ease-out",

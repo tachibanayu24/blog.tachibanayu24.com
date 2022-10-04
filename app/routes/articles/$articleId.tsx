@@ -65,8 +65,8 @@ export default function ArticleId() {
         </div>
       </div>
 
-      <div className="prose prose-slate prose-sm lg:prose-base border-t pt-4">
-        <div className="w-full overflow-hidden">{parse(content)}</div>
+      <div className="prose prose-slate prose-sm max-w-prose lg:prose-base border-t pt-4 lg:px-20">
+        <div className="overflow-hidden">{parse(content)}</div>
       </div>
     </div>
   );
