@@ -1,4 +1,4 @@
-import type { LoaderFunction } from "@remix-run/node";
+import type { LoaderFunction, MetaFunction } from "@remix-run/node";
 import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 
@@ -8,6 +8,7 @@ import { format } from "date-fns";
 import { client } from "~/libs/server/apiClient.server";
 import { CategoryBadge } from "~/components/CategoryBadge";
 import type { Article } from "~/types/cms";
+import { removeHTMLTags, truncate } from "~/utils";
 
 export const loader: LoaderFunction = async ({ params }) => {
   const content = await client
@@ -23,6 +24,22 @@ export const loader: LoaderFunction = async ({ params }) => {
 
   return json(content);
 };
+
+export const meta: MetaFunction = ({ data }: { data: Article }) => {
+  return {
+    charset: "utf-8",
+    title: `${data.title} | たちばなゆうとのブログ`,
+    description: truncate(removeHTMLTags(data.content), 100),
+    "og:title": `${data.title} | たちばなゆうとのブログ`,
+    "og:description": truncate(removeHTMLTags(data.content), 100),
+    "og:image": data.eyecatch.url,
+    "twitter:card": "summary_large_image",
+    "twitter:title": `${data.title} | たちばなゆうとのブログ`,
+    "twitter:creator": "tachibanayu24",
+    "twitter:description": truncate(removeHTMLTags(data.content), 100),
+  };
+};
+
 export default function ArticleId() {
   const { title, content, category, eyecatch, publishedAt } =
     useLoaderData<Article>();

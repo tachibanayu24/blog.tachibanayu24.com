@@ -27,7 +27,8 @@ export const meta: MetaFunction = () => ({
   "twitter:card": "summary",
   "twitter:title": "たちばなゆうとのブログ",
   "twitter:creator": "tachibanayu24",
-  "twitter:description": "summary_large_image",
+  "twitter:description":
+    "たちばなゆうとのブログです。技術的な関心・日記・ファイナンスのことなどを書いていきます。",
 });
 
 export function links() {

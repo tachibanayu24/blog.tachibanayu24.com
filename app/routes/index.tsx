@@ -4,6 +4,7 @@ import { useLoaderData } from "@remix-run/react";
 import { ArticleCard } from "~/components/ArticleCard";
 import { client } from "~/libs/server/apiClient.server";
 import type { Article } from "~/types/cms";
+import { removeHTMLTags } from "~/utils";
 
 export const loader: LoaderFunction = async () => {
   const { contents } = await client.getList<Article[]>({
@@ -21,7 +22,7 @@ export default function Index() {
         <ArticleCard
           key={article.id}
           title={article.title}
-          body={article.content.replace(/(<([^>]+)>)/gi, "")}
+          body={removeHTMLTags(article.content)}
           eyecatch={article.eyecatch.url}
           category={article.category.name}
           publishedAt={new Date(article.publishedAt)}
