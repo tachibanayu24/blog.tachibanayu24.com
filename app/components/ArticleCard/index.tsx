@@ -26,7 +26,11 @@ export const ArticleCard = ({
       to={src}
     >
       <div className="flex justify-center bg-slate-100 rounded-t-lg">
-        <img src={eyecatch} className="h-[180px] rounded-t-lg" alt={title} />
+        <img
+          src={eyecatch}
+          className="h-[180px] rounded-t-lg object-cover w-full"
+          alt={title}
+        />
       </div>
       <div className="p-3 flex flex-col items-cente justify-start gap-1">
         <p className="line-clamp-1 font-bold">{title}</p>
