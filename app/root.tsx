@@ -9,7 +9,8 @@ import {
 } from "@remix-run/react";
 import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
-import styles from "./tailwind.css";
+import styleTailwind from "./tailwind.css";
+import styleKatex from "katex/dist/katex.min.css";
 
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
@@ -33,7 +34,8 @@ export const meta: MetaFunction = () => ({
 
 export function links() {
   return [
-    { rel: "stylesheet", href: styles },
+    { rel: "stylesheet", href: styleTailwind },
+    { rel: "stylesheet", href: styleKatex },
     {
       rel: "icon",
       href: "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text x=%2250%%22 y=%2250%%22 style=%22dominant-baseline:central;text-anchor:middle;font-size:90px;%22>🐰</text></svg>",

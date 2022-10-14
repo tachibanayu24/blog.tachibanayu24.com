@@ -2,7 +2,10 @@ import type { LoaderFunction, MetaFunction } from "@remix-run/node";
 import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 
-import parse from "html-react-parser";
+import ReactMarkdown from "react-markdown";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
+
 import { format } from "date-fns";
 
 import { client } from "~/libs/server/apiClient.server";
@@ -66,7 +69,11 @@ export default function ArticleId() {
       </div>
 
       <div className="prose prose-slate prose-sm max-w-prose lg:prose-base border-t pt-4 lg:px-20">
-        <div className="overflow-hidden">{parse(content)}</div>
+        <ReactMarkdown
+          remarkPlugins={[remarkMath]}
+          rehypePlugins={[rehypeKatex]}
+          children={content}
+        />
       </div>
     </div>
   );

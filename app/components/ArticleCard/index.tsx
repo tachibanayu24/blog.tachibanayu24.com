@@ -22,7 +22,7 @@ export const ArticleCard = ({
 }: Props) => {
   return (
     <Link
-      className="block h-[320px] w-[480px] pb-2 rounded-lg bg-slate-200 shadow-lg"
+      className="block w-[480px] pb-2 rounded-lg bg-slate-200 shadow-lg"
       to={src}
     >
       <div className="flex justify-center bg-slate-100 rounded-t-lg">
@@ -32,13 +32,14 @@ export const ArticleCard = ({
           alt={title}
         />
       </div>
-      <div className="p-3 flex flex-col items-cente justify-start gap-1">
-        <p className="line-clamp-1 font-bold">{title}</p>
+      <div className="p-3 flex flex-col gap-2">
+        <p className="font-bold">{title}</p>
+
         <div className="flex justify-between items-center font-thin text-sm mb-3">
           <CategoryBadge category={category} />
           <p>{format(publishedAt, "yyyy/MM/dd HH:mm")}</p>
         </div>
-        <p className="line-clamp-2 text-sm text-gray-700">{body}</p>
+        <p className="line-clamp-3 text-sm text-gray-700">{body}</p>
       </div>
     </Link>
   );
