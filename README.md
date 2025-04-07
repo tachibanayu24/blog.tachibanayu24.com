@@ -1,8 +1,8 @@
 # [blog.tachibanayu24.com](https://blog.tachibanayu24.com)
 
-ブログをやろうかなと思って作成中
-
-まだ未完成
+~~ブログをやろうかなと思って作成中~~
+~~まだ未完成~~
+-> https://github.com/tachibanayu24/hokori-log に移動しました
 
 ## 利用スタック
 
